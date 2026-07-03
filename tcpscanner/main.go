@@ -19,7 +19,8 @@ const host = "scanme.nmap.org"
 
 func worker(ports, results chan int) {
 	for port := range ports {
-		addr := fmt.Sprintf("%s:%d", host, port)
+		// addr := fmt.Sprintf("%s:%d", host, port) // does not work with IPv6
+		addr := net.JoinHostPort(host, fmt.Sprintf("%d", port))
 		conn, err := net.Dial("tcp", addr)
 		if err != nil {
 			// closed port		syn->, <-rst
