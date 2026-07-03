@@ -3,5 +3,7 @@ name: test and scan
 on: [push]
 
 jobs:
-  go:
-    uses: jreisinger/github-actions/.github/workflows/go-test-scan.yml@main
+  go-test:
+    uses: jreisinger/github-actions/.github/workflows/go-test.yml@v1.0.1
+  trivy-scan:
+    uses: jreisinger/github-actions/.github/workflows/trivy-scan.yml@v1.0.1
